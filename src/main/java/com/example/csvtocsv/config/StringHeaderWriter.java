@@ -1,6 +1,5 @@
 package com.example.csvtocsv.config;
 
-
 import org.springframework.batch.item.file.FlatFileHeaderCallback;
 
 import java.io.IOException;

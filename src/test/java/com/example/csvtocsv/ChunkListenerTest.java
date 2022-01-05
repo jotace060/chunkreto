@@ -1,10 +1,8 @@
 package com.example.csvtocsv;
-
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
-import org.mockito.MockitoAnnotations;
 import org.mockito.junit.MockitoJUnitRunner;
 import org.springframework.batch.core.jsr.ChunkListenerAdapter;
 import org.springframework.batch.core.scope.context.ChunkContext;
@@ -15,8 +13,11 @@ import static org.mockito.Mockito.*;
 
 @RunWith(MockitoJUnitRunner.class)
 public class ChunkListenerTest {
+
     private ChunkListenerAdapter adapter;
 
+    @Mock
+    private ChunkListener chunk;
     @Mock
     private ChunkListener delegate;
     @Mock
@@ -24,8 +25,7 @@ public class ChunkListenerTest {
 
     @Before
     public void setUp() {
-        MockitoAnnotations.initMocks(this);
-        adapter = new ChunkListenerAdapter( delegate);
+         adapter = new ChunkListenerAdapter( delegate);
     }
 
     @Test(expected=IllegalArgumentException.class)
@@ -67,6 +67,9 @@ public class ChunkListenerTest {
         doThrow(new Exception("This is expected")).when(delegate).afterChunk();
         adapter.afterChunk(null);
     }
+
+
+
 
 
 }
